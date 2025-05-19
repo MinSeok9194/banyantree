@@ -122,6 +122,7 @@ void guest_in_execution(void)
     room_data_buf[45] = 0xff;         //Key IN시 점등되는 전등
     //room_data_buf[46] = 0xff;        //Key IN시 점등되는 전등
     room_data_buf[47] = 0xff;
+    room_data_buf[48] = 0x7f;
     room_data_buf[50] = 0xff;
     room_data_buf[51] = 0xff;
     room_data_buf[52] = 0xff;
@@ -155,6 +156,7 @@ void guest_out_executiom(void)
     room_data_buf[45] = 0;            //Relay All OFF
     room_data_buf[46] = 0;
     room_data_buf[47] = 0;
+    room_data_buf[48] &= 0x80;    
     room_data_buf[50] = 0;
     room_data_buf[51] = 0;
     room_data_buf[52] = 0;
@@ -1079,8 +1081,8 @@ void relay_out_execution(void)
       {
           P_rly_8 = 1; //전열 A,B
           P_rly_7 = 1; //일반전등
-          P_rly_15 = 1; //SPARE#1
-          P_rly_14 = 1; //SPARE#2
+          //P_rly_15 = 1; //SPARE#1
+          //P_rly_14 = 1; //SPARE#2
           P_rly_13 = 1; //SPARE#3
           P_rly_12 = 1; //SPARE#4
           P_rly_11 = 1; //SPARE#5
@@ -1091,8 +1093,8 @@ void relay_out_execution(void)
       {
           P_rly_8 = 0; 
           P_rly_7 = 0;
-          P_rly_15 = 0;
-          P_rly_14 = 0;
+          //P_rly_15 = 0;
+          //P_rly_14 = 0;
           P_rly_13 = 0;
           P_rly_12 = 0;
           P_rly_11 = 0;
@@ -1120,6 +1122,17 @@ void relay_out_execution(void)
       
       if(room_data_buf[45] & 0x02) P_rly_6 = 1; //LIGHT 1 (C)
       else P_rly_6 = 0;      
+      
+      if(room_data_buf[48] & 0x80) //방문자 알림등 220V 제어용
+      {
+          P_rly_15 = 1;
+          P_rly_14 = 1;
+      }
+      else
+      {
+          P_rly_15 = 0;
+          P_rly_14 = 0;
+      }
       
     break;      
     

@@ -220,11 +220,17 @@ void light_switch_data_set_uart3(unsigned char index, unsigned int index_bit)
           break;
           
     case 6: //19층 우
-    case 14: //신관(클럽동) I Type
     case 15: //신관(클럽동) J Type
           
           if(room_data_buf[45] & 0x02) uart3_tx_data_buf[i] |= 0x01;
           if(room_data_buf[45] & 0x04) uart3_tx_data_buf[i] |= 0x04;
+          
+          break;
+          
+    case 14: //신관(클럽동) I Type
+
+          if(room_data_buf[45] & 0x02) uart3_tx_data_buf[i] |= 0x01;
+          if(room_data_buf[45] & 0x02) uart3_tx_data_buf[i] |= 0x04;          
           
           break;
           
@@ -233,22 +239,37 @@ void light_switch_data_set_uart3(unsigned char index, unsigned int index_bit)
           if(room_data_buf[45] & 0x02) uart3_tx_data_buf[i] |= 0x01;
           if(room_data_buf[45] & 0x04) uart3_tx_data_buf[i] |= 0x08;
           if(room_data_buf[45] & 0x08) uart3_tx_data_buf[i] |= 0x02;  
-          if(room_data_buf[45] & 0x10) uart3_tx_data_buf[i] |= 0x10;
-          if((room_data_buf[45] & 0x1e) == 0) uart3_tx_data_buf[i] |= 0x04;
+          if(room_data_buf[45] & 0x08) uart3_tx_data_buf[i] |= 0x10;
+          if((room_data_buf[45] & 0x0e) == 0) uart3_tx_data_buf[i] |= 0x04;
           
           break;
           
-    case 8: //신관(클럽동) B Type
     case 9: //신관(클럽동) C Type
+
+          if(room_data_buf[45] & 0x02) uart3_tx_data_buf[i] |= 0x01;
+          if(room_data_buf[45] & 0x04) uart3_tx_data_buf[i] |= 0x02;
+          if(room_data_buf[45] & 0x04) uart3_tx_data_buf[i] |= 0x04;  
+      
+      break;
+          
+    case 8: //신관(클럽동) B Type
     case 10: //신관(클럽동) D Type
     case 11: //신관(클럽동) E Type
-    case 12: //신관(클럽동) F,F-1 Type
+//    case 12: //신관(클럽동) F,F-1 Type
     case 13: //신관(클럽동) G,H Type
           
           if(room_data_buf[45] & 0x02) uart3_tx_data_buf[i] |= 0x01;
           if(room_data_buf[45] & 0x04) uart3_tx_data_buf[i] |= 0x02;
           if(room_data_buf[45] & 0x08) uart3_tx_data_buf[i] |= 0x04;  
 
+          break;
+          
+    case 12: //신관(클럽동) F,F-1 Type
+      
+          if(room_data_buf[45] & 0x02) uart3_tx_data_buf[i] |= 0x01;
+          if(room_data_buf[45] & 0x04) uart3_tx_data_buf[i] |= 0x02;
+          if(room_data_buf[45] & 0x04) uart3_tx_data_buf[i] |= 0x04;        
+      
           break;
     }
     
@@ -304,15 +325,20 @@ void light_switch_data_set_uart3(unsigned char index, unsigned int index_bit)
           
           if(room_data_buf[45] & 0x20) uart3_tx_data_buf[i] |= 0x01;
           if(room_data_buf[45] & 0x40) uart3_tx_data_buf[i] |= 0x02;
-          if(room_data_buf[45] & 0x80) uart3_tx_data_buf[i] |= 0x04;   
+          if(room_data_buf[45] & 0x40) uart3_tx_data_buf[i] |= 0x04;   
           
           break;
           
-    case 8: //신관(클럽동) B Type
     case 9: //신관(클럽동) C Type
+      
+          if((room_data_buf[45] & 0x06) == 0) uart3_tx_data_buf[i] |= 0x02;        
+      
+      break;
+          
+    case 8: //신관(클럽동) B Type
     case 10: //신관(클럽동) D Type
     case 11: //신관(클럽동) E Type      
-    case 12: //신관(클럽동) F,F-1 Type   
+//    case 12: //신관(클럽동) F,F-1 Type   
     case 13: //신관(클럽동) G,H Type      
           
           if((room_data_buf[45] & 0x0e) == 0) uart3_tx_data_buf[i] |= 0x02;
@@ -325,6 +351,12 @@ void light_switch_data_set_uart3(unsigned char index, unsigned int index_bit)
           if(room_data_buf[45] & 0x08) uart3_tx_data_buf[i] |= 0x01;
           if(room_data_buf[45] & 0x10) uart3_tx_data_buf[i] |= 0x04;
           
+          break;
+          
+    case 12: //신관(클럽동) F,F-1 Type
+          
+          if((room_data_buf[45] & 0x06) == 0) uart3_tx_data_buf[i] |= 0x02;
+      
           break;
       
     }
@@ -376,13 +408,13 @@ void light_switch_data_set_uart3(unsigned char index, unsigned int index_bit)
       
     case 7: //신관 (클랍동) A Type
       
-      if((room_data_buf[45] & 0xe0) == 0) uart3_tx_data_buf[i] |= 0x02;
+      if((room_data_buf[45] & 0x60) == 0) uart3_tx_data_buf[i] |= 0x02;
       
       break;
       
     case 8: //신관(클럽동) B Type
       
-          if(room_data_buf[45] & 0x10) uart3_tx_data_buf[i] |= 0x01;
+          if(room_data_buf[45] & 0x20) uart3_tx_data_buf[i] |= 0x01;
           if(room_data_buf[45] & 0x20) uart3_tx_data_buf[i] |= 0x04;            
           
           break;     
@@ -396,7 +428,7 @@ void light_switch_data_set_uart3(unsigned char index, unsigned int index_bit)
           break;
           
     case 10: //신관(클럽동) D Type
-    case 12: //신관(클럽동) F,F-1 Type           
+    //case 12: //신관(클럽동) F,F-1 Type           
           
           if(room_data_buf[45] & 0x10) uart3_tx_data_buf[i] |= 0x01;
           if(room_data_buf[45] & 0x20) uart3_tx_data_buf[i] |= 0x08;
@@ -415,12 +447,27 @@ void light_switch_data_set_uart3(unsigned char index, unsigned int index_bit)
           
           break;
           
-    case 14: //신관(클럽동) I Type
     case 15: //신관(클럽동) J Type 
           
           if((room_data_buf[45] & 0x1e) == 0) uart3_tx_data_buf[i] |= 0x02;
           
           break;
+          
+    case 14: //신관(클럽동) I Type
+          
+          if((room_data_buf[45] & 0x1a) == 0) uart3_tx_data_buf[i] |= 0x02;          
+      
+          break;
+          
+    case 12: //신관(클럽동) F,F-1 Type
+      
+          if(room_data_buf[47] & 0x40) uart3_tx_data_buf[i] |= 0x01;
+          if(room_data_buf[47] & 0x80) uart3_tx_data_buf[i] |= 0x08;
+          if(room_data_buf[48] & 0x01) uart3_tx_data_buf[i] |= 0x02;  
+          if(room_data_buf[48] & 0x02) uart3_tx_data_buf[i] |= 0x10;
+          if(((room_data_buf[47] & 0xc0) == 0) && ((room_data_buf[48] & 0x03) == 0)) uart3_tx_data_buf[i] |= 0x04;        
+      
+      break;
     }
     
     ++i;
@@ -510,7 +557,7 @@ void light_switch_data_set_uart3(unsigned char index, unsigned int index_bit)
           
     case 9: //신관(클럽동) C Type
           
-          if(room_data_buf[45] & 0x70) uart3_tx_data_buf[i] |= 0x02;           
+          if((room_data_buf[45] & 0x70) == 0) uart3_tx_data_buf[i] |= 0x02;           
           
           break;          
           
@@ -613,12 +660,22 @@ void light_switch_data_set_uart3(unsigned char index, unsigned int index_bit)
       break;      
       
     case 8: //신관(클럽동) B Type
-      
+          
           if(room_data_buf[47] & 0x04) uart3_tx_data_buf[i] |= 0x02;          
-      
+          
       break;
       
     case 9: //신관(클럽동) C Type
+
+          if(room_data_buf[45] & 0x80) uart3_tx_data_buf[i] |= 0x01;
+          if(room_data_buf[47] & 0x01) uart3_tx_data_buf[i] |= 0x08;           
+          if(room_data_buf[47] & 0x02) uart3_tx_data_buf[i] |= 0x02;      
+          if(room_data_buf[47] & 0x02) uart3_tx_data_buf[i] |= 0x10;
+          if(((room_data_buf[45] & 0x80) == 0) && ((room_data_buf[47] & 0x03) == 0)) uart3_tx_data_buf[i] |= 0x04;        
+      
+      break;
+      
+      
     case 13: //신관(클럽동) G Type
       
           if(room_data_buf[45] & 0x80) uart3_tx_data_buf[i] |= 0x01;
@@ -766,8 +823,8 @@ void light_switch_data_set_uart3(unsigned char index, unsigned int index_bit)
           
         case 7: //신관(클럽동) A Type
           
-          if(room_data_buf[47] & 0x10) uart3_tx_data_buf[i] |= 0x01;
-          if(room_data_buf[47] & 0x20) uart3_tx_data_buf[i] |= 0x04;          
+          if(room_data_buf[47] & 0x01) uart3_tx_data_buf[i] |= 0x01;
+          if(room_data_buf[47] & 0x02) uart3_tx_data_buf[i] |= 0x04; 
           
           break;
       
@@ -777,13 +834,13 @@ void light_switch_data_set_uart3(unsigned char index, unsigned int index_bit)
           if(room_data_buf[47] & 0x80) uart3_tx_data_buf[i] |= 0x08;
           if(room_data_buf[48] & 0x01) uart3_tx_data_buf[i] |= 0x02;  
           if(room_data_buf[48] & 0x02) uart3_tx_data_buf[i] |= 0x10;
-          if(((room_data_buf[47] & 0xc0) == 0) && ((room_data_buf[47] & 0xc0) == 0)) uart3_tx_data_buf[i] |= 0x04;              
+          if(((room_data_buf[47] & 0xc0) == 0) && ((room_data_buf[48] & 0x03) == 0)) uart3_tx_data_buf[i] |= 0x04;              
           
           break;      
           
     case 14: //신관(클럽동) I Type
           
-          if(room_data_buf[47] & 0x10) uart3_tx_data_buf[i] |= 0x02;
+          if(room_data_buf[47] & 0x01) uart3_tx_data_buf[i] |= 0x02;
           
           break;
           
@@ -823,7 +880,7 @@ void light_switch_data_set_uart3(unsigned char index, unsigned int index_bit)
           break;
           
         case 7: //신관(클럽동) A Type
-          if((room_data_buf[47] & 0x30) == 0) uart3_tx_data_buf[i] |= 0x02;           
+          if((room_data_buf[47] & 0x0f) == 0) uart3_tx_data_buf[i] |= 0x02;           
           break;
       
         case 12: //신관(클럽동) F,F-1 Type

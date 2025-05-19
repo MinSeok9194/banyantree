@@ -319,9 +319,9 @@ void night_table_data_set(unsigned char index, unsigned char index_bit)
       if(room_data_buf[47] & 0x02) led_temp |= 0x02;
       if(room_data_buf[47] & 0x04) led_temp |= 0x04;
       if(room_data_buf[47] & 0x08) led_temp |= 0x08;
-      if(room_data_buf[47] & 0x10) led_temp |= 0x10;
-      if(room_data_buf[47] & 0x20) led_temp |= 0x20;
-      if(((room_data_buf[47] & 0x3f)== 0)) led_temp |= 0x40;       
+      if(room_data_buf[47] & 0x04) led_temp |= 0x10;
+      if(room_data_buf[47] & 0x08) led_temp |= 0x20;
+      if(((room_data_buf[47] & 0x0f)== 0)) led_temp |= 0x40;       
      
       break;
       
@@ -339,13 +339,14 @@ void night_table_data_set(unsigned char index, unsigned char index_bit)
       
    case 9: //신관(클럽동) C Type
      
+     
       if(room_data_buf[45] & 0x02) led_temp |= 0x01;
       if(room_data_buf[45] & 0x02) led_temp |= 0x02;
       if(room_data_buf[45] & 0x04) led_temp |= 0x04;
       if(room_data_buf[45] & 0x04) led_temp |= 0x08;
-      if(room_data_buf[45] & 0x08) led_temp |= 0x10;
-      if(room_data_buf[45] & 0x08) led_temp |= 0x20;
-      if(((room_data_buf[45] & 0x0e)== 0)) led_temp |= 0x40;          
+      if(room_data_buf[45] & 0x04) led_temp |= 0x10;
+      if(room_data_buf[45] & 0x04) led_temp |= 0x20;
+      if(((room_data_buf[45] & 0x06)== 0)) led_temp |= 0x40;          
       
       break;
       
@@ -378,15 +379,14 @@ void night_table_data_set(unsigned char index, unsigned char index_bit)
   
       if(room_data_buf[45] & 0x02) led_temp |= 0x01;
       if(room_data_buf[45] & 0x04) led_temp |= 0x02;
-      if(room_data_buf[45] & 0x08) led_temp |= 0x04;
+      if(room_data_buf[45] & 0x04) led_temp |= 0x04;
       if(room_data_buf[47] & 0x01) led_temp |= 0x08;
       if(room_data_buf[47] & 0x02) led_temp |= 0x10;
       if(room_data_buf[47] & 0x04) led_temp |= 0x20;
-      if(((room_data_buf[45] & 0x0e)== 0) && ((room_data_buf[47] & 0x07)==0)) led_temp |= 0x40;       
+      if(((room_data_buf[45] & 0x06)== 0) && ((room_data_buf[47] & 0x07)==0)) led_temp |= 0x40;       
   
       break;
       
-   case 14: //신관(클럽동) I Type
    case 15: //신관(클럽동) J Type
      
       if(room_data_buf[45] & 0x02) led_temp |= 0x01;
@@ -396,6 +396,18 @@ void night_table_data_set(unsigned char index, unsigned char index_bit)
       if(room_data_buf[45] & 0x10) led_temp |= 0x10;
       if(room_data_buf[45] & 0x10) led_temp |= 0x20;
       if((room_data_buf[45] & 0x1e)== 0) led_temp |= 0x40;          
+     
+     break;
+     
+   case 14: //신관(클럽동) I Type
+     
+      if(room_data_buf[45] & 0x02) led_temp |= 0x01;
+      if(room_data_buf[45] & 0x02) led_temp |= 0x02;
+      if(room_data_buf[45] & 0x08) led_temp |= 0x04;
+      if(room_data_buf[45] & 0x08) led_temp |= 0x08;
+      if(room_data_buf[45] & 0x10) led_temp |= 0x10;
+      if(room_data_buf[45] & 0x10) led_temp |= 0x20;
+      if((room_data_buf[45] & 0x1a)== 0) led_temp |= 0x40;            
      
      break;
    }
@@ -889,10 +901,10 @@ void ex_relay_data_set(unsigned char index, unsigned char index_bit)
     
   case 12: //신관(클럽동) F,F-1 Type
      
-        if(room_data_buf[47] & 0x80) uart2_tx_data_buf[i] |= 0x80; //LIGHT 15 (B)
-        if(room_data_buf[48] & 0x01) uart2_tx_data_buf[i] |= 0x40; //LIGHT 16 (B)
-        if(room_data_buf[48] & 0x02) uart2_tx_data_buf[i] |= 0x20; //LIGHT 17 (B)
-        if(room_data_buf[45] & 0x01) uart2_tx_data_buf[i] |= 0x10; //SPARE1
+        if(room_data_buf[47] & 0x80) uart2_tx_data_buf[i] |= 0x10; //LIGHT 15 (B)
+        if(room_data_buf[48] & 0x01) uart2_tx_data_buf[i] |= 0x20; //LIGHT 16 (B)
+        if(room_data_buf[48] & 0x02) uart2_tx_data_buf[i] |= 0x40; //LIGHT 17 (B)
+        if(room_data_buf[45] & 0x01) uart2_tx_data_buf[i] |= 0x80; //SPARE1
         if(room_data_buf[45] & 0x01) uart2_tx_data_buf[i] |= 0x08;  ///플랜지 배수 SW ??
         if(room_data_buf[45] & 0x01) uart2_tx_data_buf[i] |= 0x04;  //플랜지 급수 SW ??
         if(room_data_buf[45] & 0x01) uart2_tx_data_buf[i] |= 0x02;  //플랜지 경보 SW ??          
@@ -1106,6 +1118,24 @@ void ex_relay_data_set(unsigned char index, unsigned char index_bit)
             
     switch(cb_mode)
     {
+    case 9: //클럽동 C Type
+    case 10: //클럽동 D Type      
+    case 11://클럽동 E Type
+    case 12: //클럽동 F,F-1 Type
+    case 13: //클럽동 G,H Type
+    case 14: //클럽동 I Type 
+    case 15: //클럽동 J Type      
+      
+
+      
+        if(room_data_buf[45] & 0x01) uart2_tx_data_buf[i] |= 0x80;  ///SPARE1
+        if(room_data_buf[45] & 0x01) uart2_tx_data_buf[i] |= 0x40;  //SPARE2
+        if(room_data_buf[45] & 0x01) uart2_tx_data_buf[i] |= 0x20;  //SPARE3     
+        if(room_data_buf[45] & 0x01) uart2_tx_data_buf[i] |= 0x10;  //SPARE4
+        if(room_data_buf[45] & 0x01) uart2_tx_data_buf[i] |= 0x08;  //SPARE5
+        if(room_data_buf[45] & 0x01) uart2_tx_data_buf[i] |= 0x04;  //SPARE6      
+        
+      break;
       
       case 1: //spa suite (4~9 floor type)
       case 2: //spa suite ( 10 floor type )
@@ -1205,6 +1235,8 @@ void ex_485_send(unsigned char index)
   ++i;                                                        //Length point(아래에서 처리)
   uart2_tx_data_buf[i++] = 0x90 + index;        //Device bit
   uart2_tx_data_buf[i++] = room_data_buf[49]; //Key 상태
+  uart2_tx_data_buf[i++] = (room_data_buf[40] & 0x0c);  //DND,MUR 전달(연동 1층 2층)
+  
   for(j=1; j<i; ++j) crc += uart2_tx_data_buf[j];
   crc ^= 0x55;
   uart2_tx_data_buf[i++] = crc;                             //CRC
@@ -2034,24 +2066,24 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
             switch(index)
             {
             case 0:
-                if(room_data_buf[45] & 0x1e) room_data_buf[45] &= 0xe1;
-                else room_data_buf[45] |= 0x1e;
+                if(room_data_buf[45] & 0x0e) room_data_buf[45] &= 0xf1;
+                else room_data_buf[45] |= 0x0e;
                 break;
                 
             case 2:
-                if(room_data_buf[45] & 0xe0) room_data_buf[45] &= 0x1f;
-                else room_data_buf[45] |= 0xe0;
+                if(room_data_buf[45] & 0x60) room_data_buf[45] &= 0x9f;
+                else room_data_buf[45] |= 0x60;
                 break;
                 
             case 5:
+            case 7:              
                 if(room_data_buf[47] & 0x0f) room_data_buf[47] &= 0xf0;
                 else room_data_buf[47] |= 0x0f;
                 break;
                 
-            case 7:
-                if(room_data_buf[47] & 0x30) room_data_buf[47] &= 0xcf;
+              /*  if(room_data_buf[47] & 0x30) room_data_buf[47] &= 0xcf;
                 else room_data_buf[47] |= 0x30;
-                break;
+                break;*/
                 
              case 9:
                 if((room_data_buf[47] & 0xc0) && (room_data_buf[48] & 0x01)) 
@@ -2104,8 +2136,8 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
                 {
                 case 1:
                       
-                      if(room_data_buf[45] & 0x0e) room_data_buf[45] &= 0xf1;
-                      else room_data_buf[45] |= 0x0e;                          
+                      if(room_data_buf[45] & 0x06) room_data_buf[45] &= 0xf9;
+                      else room_data_buf[45] |= 0x06;                          
                       
                   break;
                   
@@ -2118,15 +2150,15 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
                   
                 case 4: 
                   
-                      if((room_data_buf[45] & 0x80) || (room_data_buf[47] & 0x07))
+                      if((room_data_buf[45] & 0x80) || (room_data_buf[47] & 0x03))
                       {
                           room_data_buf[45] &= 0x7f;
-                          room_data_buf[47] &= 0xf8;
+                          room_data_buf[47] &= 0xfc;
                       }
                       else
                       {
                           room_data_buf[45] |= 0x80;
-                          room_data_buf[47] |= 0x07;
+                          room_data_buf[47] |= 0x03;
                       }
                   
                   break;
@@ -2182,17 +2214,17 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
             {
             case 1:
               
-              if(room_data_buf[45] & 0x0e) room_data_buf[45] &= 0xf1;
-              else room_data_buf[45] |= 0x0e;
+              if(room_data_buf[45] & 0x06) room_data_buf[45] &= 0xf9;
+              else room_data_buf[45] |= 0x06;
               
               break;
               
-            case 2:
+            /*case 2:
               
               if(room_data_buf[45] & 0xf0) room_data_buf[45] &= 0x0f;
               else room_data_buf[45] |= 0xf0;
               
-              break;              
+              break;*/              
               
             case 5:
               
@@ -2201,6 +2233,7 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
               
               break;
               
+            case 2:  
             case 6:
               
               if((room_data_buf[47] & 0xc0) || (room_data_buf[48] & 0x03))
@@ -2261,8 +2294,8 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
             {
             case 2:
               
-                if(room_data_buf[45] & 0x1e) room_data_buf[45] &= 0xe1;
-                else room_data_buf[45] |= 0x1e;                
+                if(room_data_buf[45] & 0x1a) room_data_buf[45] &= 0xe5;
+                else room_data_buf[45] |= 0x1a;                
                 
               break;
               
@@ -2275,8 +2308,8 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
               
             case 5:
               
-                if(room_data_buf[47] & 0x1f) room_data_buf[47] &= 0xe0;
-                else room_data_buf[47] |= 0x1f;
+                if(room_data_buf[47] & 0x0f) room_data_buf[47] &= 0xf0;
+                else room_data_buf[47] |= 0x0f;
                 
               break;
             }
@@ -2519,6 +2552,7 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
                   break;
                   
                 case 3: 
+                case 6: 
                   
                       if(room_data_buf[47] & 0x01) room_data_buf[47] &= 0xfe;
                       else room_data_buf[47] |= 0x01;
@@ -2531,13 +2565,12 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
                       else room_data_buf[47] |= 0x04;                      
                   
                   break;
+                 
                   
-                case 6:
-                  
-                      if(room_data_buf[47] & 0x10) room_data_buf[47] &= 0xef;
+                  /*    if(room_data_buf[47] & 0x10) room_data_buf[47] &= 0xef;
                       else room_data_buf[47] |= 0x10;                         
                   
-                  break;
+                  break;*/
                   
                 case 8:
                   
@@ -2569,8 +2602,8 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
                   
                 case 2:
                   
-                      if(room_data_buf[45] & 0x10) room_data_buf[45] &= 0xef;
-                      else room_data_buf[45] |= 0x10;                        
+                      if(room_data_buf[45] & 0x20) room_data_buf[45] &= 0xdf;
+                      else room_data_buf[45] |= 0x20;                        
                   
                   break;
                   
@@ -2686,12 +2719,12 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
                   
                   break;
                   
-                case 2:
+                /*case 2:
                   
                       if(room_data_buf[45] & 0x10) room_data_buf[45] &= 0xef;
                       else room_data_buf[45] |= 0x10;                          
                   
-                  break;
+                  break;*/
                   
                 case 3:
                   
@@ -2707,6 +2740,7 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
                   
                   break;
                   
+                case 2:  
                 case 6: 
                   
                       if(room_data_buf[47] & 0x40) room_data_buf[47] &= 0xbf;
@@ -2779,8 +2813,8 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
             
           case 6:
                       
-                      if(room_data_buf[47] & 0x10) room_data_buf[47] &= 0xef;
-                      else room_data_buf[47] |= 0x10;
+                      if(room_data_buf[47] & 0x01) room_data_buf[47] &= 0xfe;
+                      else room_data_buf[47] |= 0x01;
             
             break;
           }
@@ -3020,6 +3054,7 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
                     break;      
                     
                 case 3: 
+                case 6:                  
                   
                       if(room_data_buf[47] & 0x02) room_data_buf[47] &= 0xfd;
                       else room_data_buf[47] |= 0x02;
@@ -3033,12 +3068,12 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
                   
                   break;         
                   
-                case 6:
+
                     
-                      if(room_data_buf[47] & 0x20) room_data_buf[47] &= 0xdf;
+                     /* if(room_data_buf[47] & 0x20) room_data_buf[47] &= 0xdf;
                       else room_data_buf[47] |= 0x20;                           
                       
-                  break;
+                  break;*/
                   
                 case 8:
                       
@@ -3173,12 +3208,12 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
                   
                   break;
                   
-                case 2: 
+                /*case 2: 
                   
                       if(room_data_buf[45] & 0x20) room_data_buf[45] &= 0xdf;
                       else room_data_buf[45] |= 0x20;                        
                       
-                  break;                     
+                  break;*/                     
                   
                 case 3:
                   
@@ -3194,6 +3229,7 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
                   
                   break;     
                   
+                case 2:  
                 case 6: 
                   
                       if(room_data_buf[47] & 0x80) room_data_buf[47] &= 0x7f;
@@ -3238,8 +3274,8 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
           {
           case 0:
             
-                      if(room_data_buf[45] & 0x04) room_data_buf[45] &= 0xfb;
-                      else room_data_buf[45] |= 0x04;                    
+                      if(room_data_buf[45] & 0x02) room_data_buf[45] &= 0xfd;
+                      else room_data_buf[45] |= 0x02;                    
             
             break;
             
@@ -3486,8 +3522,8 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
                       
                   case 1:
                       
-                      if(room_data_buf[45] & 0x80) room_data_buf[45] &= 0x7f;
-                      else room_data_buf[45] |= 0x80;                        
+                      if(room_data_buf[45] & 0x40) room_data_buf[45] &= 0xbf;
+                      else room_data_buf[45] |= 0x40;                        
                       
                     break;
                     
@@ -3528,8 +3564,8 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
                 {
                 case 0:
                   
-                      if(room_data_buf[45] & 0x08) room_data_buf[45] &= 0xf7;
-                      else room_data_buf[45] |= 0x08;                            
+                      if(room_data_buf[45] & 0x04) room_data_buf[45] &= 0xfb;
+                      else room_data_buf[45] |= 0x04;                            
                   
                   break;
                   
@@ -3598,17 +3634,17 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
                 {
                 case 0:
 
-                      if(room_data_buf[45] & 0x08) room_data_buf[45] &= 0xf7;
-                      else room_data_buf[45] |= 0x08;      
+                      if(room_data_buf[45] & 0x04) room_data_buf[45] &= 0xfb;
+                      else room_data_buf[45] |= 0x04;     
                   
                   break;
                   
-                case 2:
+              /*  case 2:
                   
                       if(room_data_buf[45] & 0x40) room_data_buf[45] &= 0xbf;
                       else room_data_buf[45] |= 0x40;                             
                   
-                  break;   
+                  break;*/   
 
                 case 3:
                   
@@ -3624,6 +3660,7 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
                   
                   break;          
                   
+                case 2:
                 case 6: 
                   
                       if(room_data_buf[48] & 0x01) room_data_buf[48] &= 0xfe;
@@ -3805,8 +3842,8 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
          
         case 7: //신관(클럽동) A Type
         
-                      if(room_data_buf[45] & 0x10) room_data_buf[45] &= 0xef;
-                      else room_data_buf[45] |= 0x10;           
+                      if(room_data_buf[45] & 0x08) room_data_buf[45] &= 0xf7;
+                      else room_data_buf[45] |= 0x08;           
         
         break;
         
@@ -3830,8 +3867,8 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
                 {
                 case 4:
                   
-                      if(room_data_buf[47] & 0x04) room_data_buf[47] &= 0xfb;
-                      else room_data_buf[47] |= 0x04;
+                      if(room_data_buf[47] & 0x02) room_data_buf[47] &= 0xfd;
+                      else room_data_buf[47] |= 0x02;
                   
                   break;  
                 }
@@ -3856,13 +3893,14 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
          
                 switch(index)
                 {
-                case 2:
+                /*case 2:
                   
                       if(room_data_buf[45] & 0x80) room_data_buf[45] &= 0x7f;
                       else room_data_buf[45] |= 0x80;                             
                   
-                  break;  
+                  break;*/  
                   
+                case 2:
                 case 6: 
                   
                       if(room_data_buf[48] & 0x02) room_data_buf[48] &= 0xfd;
@@ -4056,8 +4094,8 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
           
         case 7: //클럽동(신관) A Type
           
-          if(room_data_buf[47] & 0x3f) room_data_buf[47] &= 0xc0;
-          else room_data_buf[47] |= 0x3f;
+          if(room_data_buf[47] & 0x0f) room_data_buf[47] &= 0xf0;
+          else room_data_buf[47] |= 0x0f;
           
           break;
           
@@ -4070,8 +4108,8 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
           
         case 9: //클럽동(신관) C Type
           
-          if(room_data_buf[45] & 0x0e) room_data_buf[45] &= 0xf1;
-          else room_data_buf[45] |= 0x0e;
+          if(room_data_buf[45] & 0x06) room_data_buf[45] &= 0xf9;
+          else room_data_buf[45] |= 0x06;
           
           break;
           
@@ -4100,24 +4138,30 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
           
         case 12: //클럽동(신관) F,F-1 Type
           
-          if((room_data_buf[45] & 0x0e) || (room_data_buf[47] & 0x07))
+          if((room_data_buf[45] & 0x06) || (room_data_buf[47] & 0x07))
           {
-            room_data_buf[45] &= 0xf1;
+            room_data_buf[45] &= 0xf9;
             room_data_buf[47] &= 0xf8;
           }
           else
           {
-            room_data_buf[45] |= 0x0e;
+            room_data_buf[45] |= 0x06;
             room_data_buf[47] |= 0x07;
           }
           
           break;
           
-        case 14: //클럽동(신관) I Type
         case 15: //클럽동(신관) J Type          
           
           if(room_data_buf[45] & 0x1e) room_data_buf[45] &= 0xe1;
           else room_data_buf[45] |= 0x1e;
+          
+          break;
+          
+        case 14: //클럽동(신관) I Type
+         
+          if(room_data_buf[45] & 0x1a) room_data_buf[45] &= 0xe5;
+          else room_data_buf[45] |= 0x1a;           
           
           break;
         }
@@ -4278,8 +4322,7 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
         case 10: //클럽동(신관) D Type
         case 11: //클럽동(신관) E Type          
         case 12: //클럽동(신관) F,F-1 Type    
-        case 13: //클럽동(신관) G Type       
-        case 14: //클럽동(신관) I Type        
+        case 13: //클럽동(신관) G Type               
         case 15: //클럽동(신관) J Type                    
           
           if(room_data_buf[45] & 0x04) room_data_buf[45] &= 0xfb;
@@ -4288,6 +4331,7 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
           break;           
           
         case 9: //클럽동(신관) C Type
+        case 14: //클럽동(신관) I Type          
           
           if(room_data_buf[45] & 0x02) room_data_buf[45] &= 0xfd;
           else room_data_buf[45] |= 0x02;
@@ -4359,8 +4403,7 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
             
         case 8: //클럽동(신관) B Type
         case 10: //클럽동(신관) D Type
-        case 11: //클럽동(신관) E Type  
-        case 12: //클럽동(신관) F,F-1 Type   
+        case 11: //클럽동(신관) E Type   
         case 13: //클럽동(신관) G Type        
         case 14: //클럽동(신관) I Type
         case 15: //클럽동(신관) J Type                    
@@ -4371,11 +4414,14 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
           break;                  
           
         case 9: //신관(클럽동) C Type
-
+        case 12: //클럽동(신관) F,F-1 Type  
+          
           if(room_data_buf[45] & 0x04) room_data_buf[45] &= 0xfb;
           else room_data_buf[45] |= 0x04;          
           
           break;    
+          
+          
         }      
    
       break;      
@@ -4517,8 +4563,8 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
               
         case 7: //신관(클럽동) A Type
           
-              if(room_data_buf[47] & 0x10) room_data_buf[47] &= 0xef;
-              else room_data_buf[47] |= 0x10;
+              if(room_data_buf[47] & 0x04) room_data_buf[47] &= 0xfb;
+              else room_data_buf[47] |= 0x04;
           
             break;  
             
@@ -4533,8 +4579,8 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
           
         case 9: //클럽동(신관) C Type
           
-              if(room_data_buf[45] & 0x08) room_data_buf[45] &= 0xf7;
-              else room_data_buf[45] |= 0x08;          
+              if(room_data_buf[45] & 0x04) room_data_buf[45] &= 0xfb;
+              else room_data_buf[45] |= 0x04;          
           
           break;
           
@@ -4584,6 +4630,11 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
         break;
         
         case 7: //신관(클럽동) A Type
+          
+              if(room_data_buf[47] & 0x08) room_data_buf[47] &= 0xf7;
+              else room_data_buf[47] |= 0x08;            
+          
+            break;
         case 8: //클럽동(신관) B Type          
           
               if(room_data_buf[47] & 0x20) room_data_buf[47] &= 0xdf;
@@ -4593,8 +4644,8 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
           
         case 9: //클럽동(신관) C Type
               
-              if(room_data_buf[45] & 0x08) room_data_buf[45] &= 0xf7;
-              else room_data_buf[45] |= 0x08;          
+              if(room_data_buf[45] & 0x04) room_data_buf[45] &= 0xfb;
+              else room_data_buf[45] |= 0x04;          
           
           break;     
           
@@ -4850,8 +4901,8 @@ void nt_switch_bit_check(unsigned char key_code, unsigned char index)
       
     case K_fcu_auto_manual: room_data_buf[54+index] &= 0xf8;  room_data_buf[16+index] |= 0x80; break;
       
-    case K_dnd: dnd_mur_execution('D','T'); break;
-    case K_mur: dnd_mur_execution('M','T'); break;
+    case K_dnd: control_count = 0; dnd_mur_control_flag = 1; dnd_mur_execution('D','T'); break;
+    case K_mur: control_count = 0; dnd_mur_control_flag = 1; dnd_mur_execution('M','T'); break;
     case K_call_wait:
     case K_emergency:
     case K_chime_push:
@@ -5091,28 +5142,44 @@ void key_sensor_rx_check(unsigned char index)
 
 void ex_485_receive(void)
 {
-    if(key_status_data != uart2_rxd_buf[2])
+    if((cb_mode == 4) || (cb_mode == 6)) //19층 (좌,우 Type) - Key sensor 없음.
     {
-        key_status_data = uart2_rxd_buf[2];
-        
-        switch(key_status_data)
-        {
-        case 0x00: //공실
-           ks_key_status = 0x00;
-           break;
+      if(key_status_data != uart2_rxd_buf[2])
+      {
+          key_status_data = uart2_rxd_buf[2];
           
-        case 0x01: //청소중
-           ks_key_status = 0x10;
-           break;
-          
-        case 0x02: //청소완료
-           ks_key_status = 0x20;
-           break;
-           
-        case 0x03: //재실
-           ks_key_status = 0x30;
-           break;
-        }
+          switch(key_status_data)
+          {
+          case 0x00: //공실
+             ks_key_status = 0x00;
+             break;
+              
+          case 0x01: //청소중
+             ks_key_status = 0x10;
+             break;
+            
+          case 0x02: //청소완료     
+             ks_key_status = 0x20;
+             break;
+             
+          case 0x03: //재실
+             ks_key_status = 0x30;
+             break;
+          }
+      }
+    }
+    
+    if(!dnd_mur_control_flag) //제어 상태가아닐때 수신받는다..
+    {
+      if((room_data_buf[40] & 0x0c) != (uart2_rxd_buf[3] & 0x0c))
+      {
+          room_data_buf[40] = uart2_rxd_buf[3]; //DND, MUR 동기화
+      }
+    } ////////////////////////////////////
+    else if(++control_count > 5) //제어후 5회 이상 수신 보낸뒤 다시 재수신 진행
+    {
+        control_count = 0;
+        dnd_mur_control_flag = 0;
     }
 }
 

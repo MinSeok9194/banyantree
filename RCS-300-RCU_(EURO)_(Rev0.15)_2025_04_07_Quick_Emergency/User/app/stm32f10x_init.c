@@ -21,7 +21,7 @@ static volatile ErrorStatus HSEStartUpStatus = SUCCESS;
 /******************************************************************************************************/
 void Internal_timer_Proc() {				
 u8 ix;
-
+      
       if(tm1ms_f) { tm1ms_f =0;	//every 1msec 
       
       if(!tm0fg) {	if(!--timer_buf[0]) tm0fg =1;		}		
@@ -146,35 +146,26 @@ u8 ix;
      
      if(f_em_flag)
      {
-       // 2025.04.07 이머전시 5초 대기시간 삭제.
-       if(++em_sign_timer > 100)
+       if(++em_sign_keep_timer > 5000)
        {
-         em_sign_timer = 0;
-         P_ind_led ^= 1;
-         room_data_buf[42] |= 0x01;    //Emergency call
+         em_sign_keep_timer = 5001;
+         if(++em_sign_timer > 100)
+         {
+           em_sign_timer = 0;
+           P_ind_led ^= 1;
+           //P_ex_led1 ^= 1;
+           room_data_buf[42] |= 0x01;    //Emergency call
+           //f_em = 1;
+         }
+       }        
+       else{
+         if(++em_sign_timer > 500)
+         {
+           em_sign_timer = 0;
+           P_ind_led ^= 1;
+           //P_ex_led1 ^= 1;
+         }
        }
-       
-       
-       // if(++em_sign_keep_timer > 5000)
-       // {
-       //   em_sign_keep_timer = 5001;
-       //   if(++em_sign_timer > 100)
-       //   {
-       //     em_sign_timer = 0;
-       //     P_ind_led ^= 1;
-       //     //P_ex_led1 ^= 1;
-       //     room_data_buf[42] |= 0x01;    //Emergency call
-       //     //f_em = 1;
-       //   }
-       // }        
-       // else{
-       //   if(++em_sign_timer > 500)
-       //   {
-       //     em_sign_timer = 0;
-       //     P_ind_led ^= 1;
-       //     //P_ex_led1 ^= 1;
-       //   }
-       // }
      }
      else 
      {  
@@ -212,8 +203,8 @@ u8 ix;
     {
       if(room_data_buf[48] & 0x80) //방문자알림등
       {
-            P_rly_9 = 0;
-            P_rly_10 = 0;
+            //P_rly_9 = 0;
+            //P_rly_10 = 0;
             /*if(++guest_alrm_timer_1 > 100)
             {
                 guest_alrm_timer_1 = 0;
@@ -230,8 +221,8 @@ u8 ix;
       {
           //guest_alrm_timer_1 = 0;
           //guest_alrm_timer_2 = 0;
-          P_rly_9 = 1;
-          P_rly_10 = 1;
+          //P_rly_9 = 1;
+          //P_rly_10 = 1;
       }
     }
      
@@ -585,7 +576,7 @@ void dip_switch_read(void)
     case 0xd8:
 
                cb_mode = 4; // 19층(좌)  (1ea) 온도조절기 2ea
-
+              
                room_data_buf[16] |= 0x08;  //1번 온도센서 사용(실내)
                room_data_buf[16] &= 0xbf; //1번 온도센서 미사용(바닥)
                room_data_buf[17] |= 0x08; //2번 온도센서 사용(실내)
@@ -609,7 +600,7 @@ void dip_switch_read(void)
     break;
     
     case 0x98:
-
+                
                cb_mode = 6;  //19층(우) (1ea) 온도조절기 2ea
 
                room_data_buf[16] |= 0x08;  //1번 온도센서 사용(실내)
@@ -672,8 +663,8 @@ void dip_switch_read(void)
     break;     
     
     case 0x28:       
-                
-               cb_mode = 11;  //클럽동(신관) E Type
+               
+               cb_mode = 11;  //클럽동(신관) E Type 장애인 객실
                
                room_data_buf[16] |= 0x08;  //1번 온도센서 사용(실내)
                room_data_buf[16] &= 0xbf; //1번 온도센서 미사용(바닥)

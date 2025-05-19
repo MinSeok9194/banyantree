@@ -221,7 +221,7 @@ const u8 b_ls_switch_kind_table_7_uart3[][20][8] =
     {K_stand_1,K_stand_2,K_stand_3,K_stand_1,K_stand_2,K_stand_3 }, //LIGHT 4 ( L : 3 ) E - OK
     {K_stand_1,K_stand_2,K_stand_3,K_stand_1,K_stand_2,K_stand_3 }, //LIGHT 5 ( L : 3 ) M - OK 
     {0,K_stand_master,0,0,K_stand_master,0}, //LIGHT 6 ( L : M ) M - OK
-    {K_stand_1,K_stand_3,K_stand_master,K_stand_2,K_stand_4,K_stand_master }, //LIGHT 7 ( L : 4+M ) B - OK
+    {K_stand_1,K_stand_3,K_stand_master,K_stand_2,K_stand_4,K_stand_master }, //LIGHT 7 ( L : 4+M ) B - OK //LIGHT 3 = LIGHT 7 같아짐 수정 @2020_01_16
     {0,K_wait,0,0,K_wait,0}, //LIGHT 8 ( L : wait ) A - OK
     {0,K_wait,0,0,K_wait,0}, //LIGHT 9 ( L : wait ) N - OK
   }, // 클럽동(신관) F,F-1 type   

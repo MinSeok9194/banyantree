@@ -113,6 +113,9 @@ u1EX u8 f_first_input_power_on[4];
 u1EX u8 exinput_toggle_bit[8][3];
 u1EX u8 key_status_data;
 
+u1EX u8 dnd_mur_control_flag;
+u1EX u8 control_count;
+
 u1EX __dwbits uart2_flag1;
 #define f_uart2_data_send			uart2_flag1.s.b0
 #define f_uart2_com_start			uart2_flag1.s.b1
@@ -189,19 +192,19 @@ const u8 b_sub_device_table[][16] = {
   
   { B_TEMP_SENSOR_1, B_KEY_SENSOR_0, B_NIGHT_TABLE_1, B_CHIME_IND, B_EX_RELAY_1, B_EX_RELAY_2, B_EX_RELAY_3, 0xff, 0xff }, //클럽동(신관) B Type  
   
-  { B_TEMP_SENSOR_1, B_KEY_SENSOR_0, B_NIGHT_TABLE_1, B_CHIME_IND, B_EX_RELAY_1, B_EX_RELAY_2, B_EX_RELAY_3, 0xff, 0xff }, //클럽동(신관) C Type    
+  { B_TEMP_SENSOR_1, B_KEY_SENSOR_0, B_NIGHT_TABLE_1, B_CHIME_IND, B_EX_RELAY_1, B_EX_RELAY_2, B_EX_RELAY_3, B_EX_RELAY_4, 0xff, 0xff }, //클럽동(신관) C Type    
   
-  { B_TEMP_SENSOR_1, B_KEY_SENSOR_0, B_NIGHT_TABLE_1, B_CHIME_IND, B_EX_RELAY_1, B_EX_RELAY_2, B_EX_RELAY_3, 0xff, 0xff }, //클럽동(신관) D Type      
+  { B_TEMP_SENSOR_1, B_KEY_SENSOR_0, B_NIGHT_TABLE_1, B_CHIME_IND, B_EX_RELAY_1, B_EX_RELAY_2, B_EX_RELAY_3, B_EX_RELAY_4, 0xff, 0xff }, //클럽동(신관) D Type      
   
-  { B_TEMP_SENSOR_1, B_KEY_SENSOR_0, B_NIGHT_TABLE_1, B_CHIME_IND, B_EX_RELAY_1, B_EX_RELAY_2, B_EX_RELAY_3, 0xff, 0xff }, //클럽동(신관) E Type 
+  { B_TEMP_SENSOR_1, B_KEY_SENSOR_0, B_NIGHT_TABLE_1, B_CHIME_IND, B_EX_RELAY_1, B_EX_RELAY_2, B_EX_RELAY_3, B_EX_RELAY_4, 0xff, 0xff }, //클럽동(신관) E Type 
   
-  { B_TEMP_SENSOR_1, B_KEY_SENSOR_0, B_NIGHT_TABLE_1, B_CHIME_IND, B_EX_RELAY_1, B_EX_RELAY_2, B_EX_RELAY_3, 0xff, 0xff }, //클럽동(신관) F,F-1 Type   
+  { B_TEMP_SENSOR_1, B_KEY_SENSOR_0, B_NIGHT_TABLE_1, B_CHIME_IND, B_EX_RELAY_1, B_EX_RELAY_2, B_EX_RELAY_3, B_EX_RELAY_4, 0xff, 0xff }, //클럽동(신관) F,F-1 Type   
   
-  { B_TEMP_SENSOR_1, B_KEY_SENSOR_0, B_NIGHT_TABLE_1, B_CHIME_IND, B_EX_RELAY_1, B_EX_RELAY_2, B_EX_RELAY_3, 0xff, 0xff }, //클럽동(신관) G Type     
+  { B_TEMP_SENSOR_1, B_KEY_SENSOR_0, B_NIGHT_TABLE_1, B_CHIME_IND, B_EX_RELAY_1, B_EX_RELAY_2, B_EX_RELAY_3, B_EX_RELAY_4, 0xff, 0xff }, //클럽동(신관) G,H Type     
  
-  { B_TEMP_SENSOR_1, B_KEY_SENSOR_0, B_NIGHT_TABLE_1, B_CHIME_IND, B_EX_RELAY_1, B_EX_RELAY_2, B_EX_RELAY_3, 0xff, 0xff }, //클럽동(신관) I Type    
+  { B_TEMP_SENSOR_1, B_KEY_SENSOR_0, B_NIGHT_TABLE_1, B_CHIME_IND, B_EX_RELAY_1, B_EX_RELAY_2, B_EX_RELAY_3, B_EX_RELAY_4, 0xff, 0xff }, //클럽동(신관) I Type    
   
-  { B_TEMP_SENSOR_1, B_KEY_SENSOR_0, B_NIGHT_TABLE_1, B_CHIME_IND, B_EX_RELAY_1, B_EX_RELAY_2, B_EX_RELAY_3, 0xff, 0xff }, //클럽동(신관) J Type    
+  { B_TEMP_SENSOR_1, B_KEY_SENSOR_0, B_NIGHT_TABLE_1, B_CHIME_IND, B_EX_RELAY_1, B_EX_RELAY_2, B_EX_RELAY_3, B_EX_RELAY_4, 0xff, 0xff }, //클럽동(신관) J Type    
 };
 
 #define K_stand_master    0x10

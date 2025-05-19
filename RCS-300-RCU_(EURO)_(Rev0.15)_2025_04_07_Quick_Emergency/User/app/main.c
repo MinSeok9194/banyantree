@@ -23,7 +23,8 @@
 * Output         : Nonet
 * Return         : None
 *******************************************************************************/
-u8 proctrl =7;int main(void) {
+u8 proctrl =7;
+int main(void) {
 #ifdef DEBUG
   debug();
 #endif

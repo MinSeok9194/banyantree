@@ -1,0 +1,128 @@
+[Stack]
+FillEnabled=0
+OverflowWarningsEnabled=1
+WarningThreshold=90
+SpWarningsEnabled=1
+WarnLogOnly=1
+UseTrigger=1
+TriggerName=main
+LimitSize=0
+ByteLimit=50
+[DebugChecksum]
+Checksum=-326178459
+[Exceptions]
+StopOnUncaught=_ 0
+StopOnThrow=_ 0
+[CallStack]
+ShowArgs=0
+[Disassembly]
+MixedMode=1
+[Interrupts]
+Enabled=1
+[MemoryMap]
+Enabled=0
+Base=0
+UseAuto=0
+TypeViolation=1
+UnspecRange=1
+ActionState=1
+[SWOTraceHWSettings]
+OverrideDefaultClocks=0
+CpuClock=72000000
+ClockAutoDetect=0
+ClockWanted=2000000
+JtagSpeed=2000000
+Prescaler=36
+TimeStampPrescIndex=0
+TimeStampPrescData=0
+PcSampCYCTAP=1
+PcSampPOSTCNT=15
+PcSampIndex=0
+DataLogMode=0
+ITMportsEnable=0
+ITMportsTermIO=0
+ITMportsLogFile=0
+ITMlogFile=$PROJ_DIR$\ITM.log
+[JLinkDriver]
+CStepIntDis=_ 0
+TraceBufferSize=0x00010000
+TraceStallIfFIFOFull=0x00000000
+TracePortSize=0x00000004
+[SWOTraceWindow]
+PcSampling=0
+InterruptLogs=0
+ForcedTimeStamps=0
+EventCPI=0
+EventEXC=0
+EventFOLD=0
+EventLSU=0
+EventSLEEP=0
+[PowerLog]
+LogEnabled=0
+GraphEnabled=0
+ShowTimeLog=1
+ShowTimeSum=0
+Title_0=I0
+Symbol_0=0 4 1
+LiveEnabled=0
+LiveFile=PowerLogLive.log
+[DataLog]
+LogEnabled=0
+SumEnabled=0
+GraphEnabled=0
+ShowTimeLog=1
+ShowTimeSum=1
+[EventLog]
+LogEnabled=0
+SumEnabled=0
+GraphEnabled=0
+ShowTimeLog=1
+ShowTimeSum=1
+SumSortOrder=0
+[InterruptLog]
+LogEnabled=0
+SumEnabled=0
+GraphEnabled=0
+ShowTimeLog=1
+ShowTimeSum=1
+SumSortOrder=0
+[Log file]
+LoggingEnabled=_ 0
+LogFile=_ ""
+Category=_ 0
+[TermIOLog]
+LoggingEnabled=_ 0
+LogFile=_ ""
+[CallStackLog]
+Enabled=0
+[PowerProbe]
+Frequency=10000
+Probe0=I0
+ProbeSetup0=2 1 1 2 0 0
+[DriverProfiling]
+Enabled=0
+Mode=3
+Graph=0
+Symbiont=0
+Exclusions=
+[Disassemble mode]
+mode=0
+[Breakpoints2]
+Count=0
+[Aliases]
+A0=_ "C:\Users\Kimkyungnam\Desktop\jensi_samplebox\SAMPLE_BOX_0415_lastversion (2)\SAMPLE_BOX_RCU_20190415(EURO)\User\cortexm3_macro.s" ""
+A1=_ "C:\Users\Kimkyungnam\Desktop\racos\firmware\sunyoudo_famaily_hotel\RCU\User\app\main.c" ""
+A2=_ "C:\Users\Kimkyungnam\Desktop\racos\firmware\sunyoudo_famaily_hotel\sunyoudo_hotel_RCU\User\app\main.c" ""
+A3=_ "C:\Users\Kimkyungnam\Desktop\racos\firmware\sunyoudo_famaily_hotel\sunyoudo_hotel_RCU\User\cortexm3_macro.s" ""
+A4=_ "C:\Users\Leejungmin\Desktop\racos system porject\project_room\RCS\seoul\IHS_20190522\SAMPLE_BOX_RCU_(EURO)_(Rev0.10)_20191028\User\cortexm3_macro.s" ""
+A5=_ "C:\Users\Leejungmin\Desktop\racos system porject\project_room\RCS\seoul\IHS_20190522\SAMPLE_BOX_RCU_(EURO)_20191002_(Rev0.08)\User\cortexm3_macro.s" ""
+A6=_ "C:\Users\Leejungmin\Desktop\racos system porject\project_room\hitech_sample\SAMPLE_BOX_0415_lastversion\SAMPLE_BOX_RCU_20190415(EURO)\User\cortexm3_macro.s" ""
+A7=_ "C:\Users\Leejungmin\Desktop\racos system porject\project_room\incheon\RGB_skycity_hotel\skycity_rcu(Ver0.00)_20180618\User\cortexm3_macro.s" ""
+A8=_ "C:\Users\Leejungmin\Desktop\racos system porject\project_room\incheon\RGB_skycity_hotel\skycity_rcu(Ver0.01)_20180726\User\cortexm3_macro.s" ""
+A9=_ "C:\Users\Leejungmin\Desktop\racos system porject\project_room\incheon\skycity_sample_room\skycity_sample_rcu(Ver0.00)\User\app\main.c" ""
+A10=_ "C:\Users\Leejungmin\Desktop\racos system porject\project_room\jeju\hotel_1974\hotel_1974_rcu(Ver0.00)\User\cortexm3_macro.s" ""
+A11=_ "C:\Users\Leejungmin\Desktop\racos system porject\project_room\seoul\IHS_20190522\SAMPLE_BOX_RCU_(EURO)\User\cortexm3_macro.s" ""
+A12=_ "C:\Users\Leejungmin\Desktop\racos system porject\project_room\seoul\IHS_20190522\SAMPLE_BOX_RCU_(EURO)_20190625_STAND(Rev0.06)_MAIN_wait\User\cortexm3_macro.s" ""
+A13=_ "C:\Users\Racos KKN\Desktop\Racos system\KWJ\14. sunyudo hotel\Sampleroom\sunyoudo_sample_room\RCU\User\cortexm3_macro.s" "C:\Users\Racos KKN\Desktop\Racos system\KWJ\14. sunyudo hotel\Sampleroom\RCU\User\cortexm3_macro.s"
+Count=14
+SuppressDialog=1

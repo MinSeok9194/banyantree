@@ -146,30 +146,44 @@ u8 ix;
      
      if(f_em_flag)
      {
-       if(++em_sign_keep_timer > 5000)
+       // 2025.04.07 이머전시 5초 대기시간 삭제.
+       if(++em_sign_timer > 100)
        {
-         em_sign_keep_timer = 5001;
-         if(++em_sign_timer > 100)
-         {
-           em_sign_timer = 0;
-           P_ind_led ^= 1;
-           //P_ex_led1 ^= 1;
-           room_data_buf[42] |= 0x01;    //Emergency call
-           //f_em = 1;
-         }
-       }        
-       else{
-         if(++em_sign_timer > 500)
-         {
-           em_sign_timer = 0;
-           P_ind_led ^= 1;
-           //P_ex_led1 ^= 1;
-         }
+         em_sign_timer = 0;
+         P_ind_led ^= 1;
+         room_data_buf[42] |= 0x01;    //Emergency call
        }
-     }
-     else 
-     {  
+     
+     
+     // if(f_em_flag)
+     // {
+     //   if(++em_sign_keep_timer > 5000)
+     //   {
+     //     em_sign_keep_timer = 5001;
+     //     if(++em_sign_timer > 100)
+     //     {
+     //       em_sign_timer = 0;
+     //       P_ind_led ^= 1;
+     //       //P_ex_led1 ^= 1;
+     //       room_data_buf[42] |= 0x01;    //Emergency call
+     //       //f_em = 1;
+     //     }
+     //   }        
+     //   else{
+     //     if(++em_sign_timer > 500)
+     //     {
+     //       em_sign_timer = 0;
+     //       P_ind_led ^= 1;
+     //       //P_ex_led1 ^= 1;
+     //     }
+     //   }
+     // }
+     // else 
+     // {  
        //P_ex_led1 = 1;
+     }
+     else
+     {
        P_ind_led = 1;
        em_sign_keep_timer = 0;
        em_sign_timer = 0;

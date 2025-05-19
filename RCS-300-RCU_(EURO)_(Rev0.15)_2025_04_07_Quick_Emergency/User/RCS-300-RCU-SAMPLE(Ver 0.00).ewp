@@ -714,7 +714,7 @@
         </option>
         <option>
           <name>IlinkIcfFile</name>
-          <state>I:\3. 2019&#xB144;_MST-SYSTEM_220509\295. &#xBC18;&#xC57C;&#xD2B8;&#xB9AC;-190508\101. Firmware-190917\IHS_Last_Version_2020_0102\RCS-300-RCU_(EURO)_(Rev0.17)_20200512\User\stm32f10x_flash.icf</state>
+          <state>$TOOLKIT_DIR$\config\linker\ST\stm32f103xC.icf</state>
         </option>
         <option>
           <name>IlinkIcfFileSlave</name>
@@ -1947,7 +1947,7 @@
       <name>$PROJ_DIR$\..\include\stm32f10x_rcc.h</name>
     </file>
     <file>
-      <name>$PROJ_DIR$\..\include\stm32f10x_RTC.h</name>
+      <name>$PROJ_DIR$\..\include\stm32f10x_rtc.h</name>
     </file>
     <file>
       <name>$PROJ_DIR$\..\include\stm32f10x_sdio.h</name>

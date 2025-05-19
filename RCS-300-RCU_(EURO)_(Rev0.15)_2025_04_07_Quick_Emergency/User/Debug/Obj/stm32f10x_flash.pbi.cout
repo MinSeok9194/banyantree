@@ -1,26 +1,26 @@
-"C:\Users\RACOS\Downloads\반얀트리 BY 제작부\101. Firmware-190917\IHS_Last_Version_2020_0102\RCS-300-RCU_(EURO)_(Rev0.17)_20200512\module\stm32f10x_flash.c"
+"C:\MyRepository\2. Firmware\4. Site\AS\seoul ban\RCU_FirmWare\RCS-300-RCU_(EURO)_(Rev1.00)_2025.05.16\module\stm32f10x_flash.c"
 -std=c99
 -ferror-limit=100
 -I
-C:\Users\RACOS\Downloads\반얀트리 BY 제작부\101. Firmware-190917\IHS_Last_Version_2020_0102\RCS-300-RCU_(EURO)_(Rev0.17)_20200512\User
+C:\MyRepository\2. Firmware\4. Site\AS\seoul ban\RCU_FirmWare\RCS-300-RCU_(EURO)_(Rev1.00)_2025.05.16\User
 -I
-C:\Users\RACOS\Downloads\반얀트리 BY 제작부\101. Firmware-190917\IHS_Last_Version_2020_0102\RCS-300-RCU_(EURO)_(Rev0.17)_20200512\User\..\include
+C:\MyRepository\2. Firmware\4. Site\AS\seoul ban\RCU_FirmWare\RCS-300-RCU_(EURO)_(Rev1.00)_2025.05.16\User\..\include
 -I
-C:\Users\RACOS\Downloads\반얀트리 BY 제작부\101. Firmware-190917\IHS_Last_Version_2020_0102\RCS-300-RCU_(EURO)_(Rev0.17)_20200512\User\..\module
+C:\MyRepository\2. Firmware\4. Site\AS\seoul ban\RCU_FirmWare\RCS-300-RCU_(EURO)_(Rev1.00)_2025.05.16\User\..\module
 -I
-C:\Users\RACOS\Downloads\반얀트리 BY 제작부\101. Firmware-190917\IHS_Last_Version_2020_0102\RCS-300-RCU_(EURO)_(Rev0.17)_20200512\User\app
+C:\MyRepository\2. Firmware\4. Site\AS\seoul ban\RCU_FirmWare\RCS-300-RCU_(EURO)_(Rev1.00)_2025.05.16\User\app
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.0\arm\inc
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.0\arm\inc\c
 -I
-C:\Users\RACOS\Downloads\반얀트리 BY 제작부\101. Firmware-190917\IHS_Last_Version_2020_0102\RCS-300-RCU_(EURO)_(Rev0.17)_20200512\User
+C:\MyRepository\2. Firmware\4. Site\AS\seoul ban\RCU_FirmWare\RCS-300-RCU_(EURO)_(Rev1.00)_2025.05.16\User
 -I
-C:\Users\RACOS\Downloads\반얀트리 BY 제작부\101. Firmware-190917\IHS_Last_Version_2020_0102\RCS-300-RCU_(EURO)_(Rev0.17)_20200512\include
+C:\MyRepository\2. Firmware\4. Site\AS\seoul ban\RCU_FirmWare\RCS-300-RCU_(EURO)_(Rev1.00)_2025.05.16\include
 -I
-C:\Users\RACOS\Downloads\반얀트리 BY 제작부\101. Firmware-190917\IHS_Last_Version_2020_0102\RCS-300-RCU_(EURO)_(Rev0.17)_20200512\module
+C:\MyRepository\2. Firmware\4. Site\AS\seoul ban\RCU_FirmWare\RCS-300-RCU_(EURO)_(Rev1.00)_2025.05.16\module
 -I
-C:\Users\RACOS\Downloads\반얀트리 BY 제작부\101. Firmware-190917\IHS_Last_Version_2020_0102\RCS-300-RCU_(EURO)_(Rev0.17)_20200512\User\app
+C:\MyRepository\2. Firmware\4. Site\AS\seoul ban\RCU_FirmWare\RCS-300-RCU_(EURO)_(Rev1.00)_2025.05.16\User\app
 -DDEBUG_2=1
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
@@ -215,8 +215,8 @@ C:\Users\RACOS\Downloads\반얀트리 BY 제작부\101. Firmware-190917\IHS_Last_Versio
 -D__HAS_LOCATED_DECLARATION__=1
 -D__HAS_LOCATED_WITH_INIT__=1
 -D__IAR_COMPILERBASE__=593669
--D__DATE__="May 16 2025"
--D__TIME__="11:33:26"
+-D__DATE__="May 19 2025"
+-D__TIME__="15:50:33"
 -D__STDC__=1
 -D__STDC_VERSION__=199901L
 -D__STDC_HOSTED__=1
